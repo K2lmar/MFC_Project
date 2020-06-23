@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="82a78928b78c40d1be0c5038ab74e407" Name="Diagram1">
+        <EntityTypeShape EntityType="MFC_ProjectModel.AvailableServicesSet" Width="1.5" PointX="6.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MFC_ProjectModel.ClientsSet" Width="1.5" PointX="0.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MFC_ProjectModel.ConsultationsSet" Width="1.5" PointX="2.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MFC_ProjectModel.EmployeesSet" Width="1.5" PointX="9" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MFC_ProjectModel.ReportsSet" Width="1.5" PointX="4.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MFC_ProjectModel.ServicesSet" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MFC_ProjectModel.Users" Width="1.5" PointX="9.125" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MFC_ProjectModel.FK_ReportsSet_AvailableServicesSet" ManuallyRouted="false" />
+        <AssociationConnector Association="MFC_ProjectModel.FK_ServicesSet_AvailableServicesSet" ManuallyRouted="false" />
+        <AssociationConnector Association="MFC_ProjectModel.FK_ConsultationsSet_ClientsSet" ManuallyRouted="false" />
+        <AssociationConnector Association="MFC_ProjectModel.FK_ReportsSet_ClientsSet" ManuallyRouted="false" />
+        <AssociationConnector Association="MFC_ProjectModel.FK_ServicesSet_ClientsSet" ManuallyRouted="false" />
+        <AssociationConnector Association="MFC_ProjectModel.FK_ConsultationsSet_EmployeesSet" ManuallyRouted="false" />
+        <AssociationConnector Association="MFC_ProjectModel.FK_ReportsSet_ConsultationsSet" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

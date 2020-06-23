@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище MFC_ProjectModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AvailableServicesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameService" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CategoryService" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TypeService" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ConsultationsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdEmployee" Type="int" Nullable="false" />
+          <Property Name="DateAcceptance" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ReportsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdNameService" Type="int" Nullable="false" />
+          <Property Name="IdConsultation" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdNameService" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ConsultationsSet_ClientsSet">
+          <End Role="ClientsSet" Type="Self.ClientsSet" Multiplicity="1" />
+          <End Role="ConsultationsSet" Type="Self.ConsultationsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultationsSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsultationsSet_EmployeesSet">
+          <End Role="EmployeesSet" Type="Self.EmployeesSet" Multiplicity="1" />
+          <End Role="ConsultationsSet" Type="Self.ConsultationsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultationsSet">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportsSet_AvailableServicesSet">
+          <End Role="AvailableServicesSet" Type="Self.AvailableServicesSet" Multiplicity="1" />
+          <End Role="ReportsSet" Type="Self.ReportsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AvailableServicesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsSet">
+              <PropertyRef Name="IdNameService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportsSet_ClientsSet">
+          <End Role="ClientsSet" Type="Self.ClientsSet" Multiplicity="1" />
+          <End Role="ReportsSet" Type="Self.ReportsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportsSet_ConsultationsSet">
+          <End Role="ConsultationsSet" Type="Self.ConsultationsSet" Multiplicity="1" />
+          <End Role="ReportsSet" Type="Self.ReportsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsultationsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsSet">
+              <PropertyRef Name="IdConsultation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesSet_AvailableServicesSet">
+          <End Role="AvailableServicesSet" Type="Self.AvailableServicesSet" Multiplicity="1" />
+          <End Role="ServicesSet" Type="Self.ServicesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AvailableServicesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesSet">
+              <PropertyRef Name="IdNameService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesSet_ClientsSet">
+          <End Role="ClientsSet" Type="Self.ClientsSet" Multiplicity="1" />
+          <End Role="ServicesSet" Type="Self.ServicesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище MFC_ProjectModelContainer">
+          <EntitySet Name="AvailableServicesSet" EntityType="Self.AvailableServicesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientsSet" EntityType="Self.ClientsSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConsultationsSet" EntityType="Self.ConsultationsSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeesSet" EntityType="Self.EmployeesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportsSet" EntityType="Self.ReportsSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesSet" EntityType="Self.ServicesSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ConsultationsSet_ClientsSet" Association="Self.FK_ConsultationsSet_ClientsSet">
+            <End Role="ClientsSet" EntitySet="ClientsSet" />
+            <End Role="ConsultationsSet" EntitySet="ConsultationsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsultationsSet_EmployeesSet" Association="Self.FK_ConsultationsSet_EmployeesSet">
+            <End Role="EmployeesSet" EntitySet="EmployeesSet" />
+            <End Role="ConsultationsSet" EntitySet="ConsultationsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportsSet_AvailableServicesSet" Association="Self.FK_ReportsSet_AvailableServicesSet">
+            <End Role="AvailableServicesSet" EntitySet="AvailableServicesSet" />
+            <End Role="ReportsSet" EntitySet="ReportsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportsSet_ClientsSet" Association="Self.FK_ReportsSet_ClientsSet">
+            <End Role="ClientsSet" EntitySet="ClientsSet" />
+            <End Role="ReportsSet" EntitySet="ReportsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportsSet_ConsultationsSet" Association="Self.FK_ReportsSet_ConsultationsSet">
+            <End Role="ConsultationsSet" EntitySet="ConsultationsSet" />
+            <End Role="ReportsSet" EntitySet="ReportsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesSet_AvailableServicesSet" Association="Self.FK_ServicesSet_AvailableServicesSet">
+            <End Role="AvailableServicesSet" EntitySet="AvailableServicesSet" />
+            <End Role="ServicesSet" EntitySet="ServicesSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesSet_ClientsSet" Association="Self.FK_ServicesSet_ClientsSet">
+            <End Role="ClientsSet" EntitySet="ClientsSet" />
+            <End Role="ServicesSet" EntitySet="ServicesSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MFC_ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AvailableServicesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameService" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryService" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeService" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ReportsSet" Relationship="Self.FK_ReportsSet_AvailableServicesSet" FromRole="AvailableServicesSet" ToRole="ReportsSet" />
+          <NavigationProperty Name="ServicesSet" Relationship="Self.FK_ServicesSet_AvailableServicesSet" FromRole="AvailableServicesSet" ToRole="ServicesSet" />
+        </EntityType>
+        <EntityType Name="ClientsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsultationsSet" Relationship="Self.FK_ConsultationsSet_ClientsSet" FromRole="ClientsSet" ToRole="ConsultationsSet" />
+          <NavigationProperty Name="ReportsSet" Relationship="Self.FK_ReportsSet_ClientsSet" FromRole="ClientsSet" ToRole="ReportsSet" />
+          <NavigationProperty Name="ServicesSet" Relationship="Self.FK_ServicesSet_ClientsSet" FromRole="ClientsSet" ToRole="ServicesSet" />
+        </EntityType>
+        <EntityType Name="ConsultationsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" />
+          <Property Name="DateAcceptance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClientsSet" Relationship="Self.FK_ConsultationsSet_ClientsSet" FromRole="ConsultationsSet" ToRole="ClientsSet" />
+          <NavigationProperty Name="EmployeesSet" Relationship="Self.FK_ConsultationsSet_EmployeesSet" FromRole="ConsultationsSet" ToRole="EmployeesSet" />
+          <NavigationProperty Name="ReportsSet" Relationship="Self.FK_ReportsSet_ConsultationsSet" FromRole="ConsultationsSet" ToRole="ReportsSet" />
+        </EntityType>
+        <EntityType Name="EmployeesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsultationsSet" Relationship="Self.FK_ConsultationsSet_EmployeesSet" FromRole="EmployeesSet" ToRole="ConsultationsSet" />
+        </EntityType>
+        <EntityType Name="ReportsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdNameService" Type="Int32" Nullable="false" />
+          <Property Name="IdConsultation" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AvailableServicesSet" Relationship="Self.FK_ReportsSet_AvailableServicesSet" FromRole="ReportsSet" ToRole="AvailableServicesSet" />
+          <NavigationProperty Name="ClientsSet" Relationship="Self.FK_ReportsSet_ClientsSet" FromRole="ReportsSet" ToRole="ClientsSet" />
+          <NavigationProperty Name="ConsultationsSet" Relationship="Self.FK_ReportsSet_ConsultationsSet" FromRole="ReportsSet" ToRole="ConsultationsSet" />
+        </EntityType>
+        <EntityType Name="ServicesSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdNameService" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AvailableServicesSet" Relationship="Self.FK_ServicesSet_AvailableServicesSet" FromRole="ServicesSet" ToRole="AvailableServicesSet" />
+          <NavigationProperty Name="ClientsSet" Relationship="Self.FK_ServicesSet_ClientsSet" FromRole="ServicesSet" ToRole="ClientsSet" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ReportsSet_AvailableServicesSet">
+          <End Role="AvailableServicesSet" Type="Self.AvailableServicesSet" Multiplicity="1" />
+          <End Role="ReportsSet" Type="Self.ReportsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AvailableServicesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsSet">
+              <PropertyRef Name="IdNameService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesSet_AvailableServicesSet">
+          <End Role="AvailableServicesSet" Type="Self.AvailableServicesSet" Multiplicity="1" />
+          <End Role="ServicesSet" Type="Self.ServicesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AvailableServicesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesSet">
+              <PropertyRef Name="IdNameService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsultationsSet_ClientsSet">
+          <End Role="ClientsSet" Type="Self.ClientsSet" Multiplicity="1" />
+          <End Role="ConsultationsSet" Type="Self.ConsultationsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultationsSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportsSet_ClientsSet">
+          <End Role="ClientsSet" Type="Self.ClientsSet" Multiplicity="1" />
+          <End Role="ReportsSet" Type="Self.ReportsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesSet_ClientsSet">
+          <End Role="ClientsSet" Type="Self.ClientsSet" Multiplicity="1" />
+          <End Role="ServicesSet" Type="Self.ServicesSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicesSet">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsultationsSet_EmployeesSet">
+          <End Role="EmployeesSet" Type="Self.EmployeesSet" Multiplicity="1" />
+          <End Role="ConsultationsSet" Type="Self.ConsultationsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConsultationsSet">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportsSet_ConsultationsSet">
+          <End Role="ConsultationsSet" Type="Self.ConsultationsSet" Multiplicity="1" />
+          <End Role="ReportsSet" Type="Self.ReportsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsultationsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsSet">
+              <PropertyRef Name="IdConsultation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MFC_ProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AvailableServicesSet" EntityType="Self.AvailableServicesSet" />
+          <EntitySet Name="ClientsSet" EntityType="Self.ClientsSet" />
+          <EntitySet Name="ConsultationsSet" EntityType="Self.ConsultationsSet" />
+          <EntitySet Name="EmployeesSet" EntityType="Self.EmployeesSet" />
+          <EntitySet Name="ReportsSet" EntityType="Self.ReportsSet" />
+          <EntitySet Name="ServicesSet" EntityType="Self.ServicesSet" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_ReportsSet_AvailableServicesSet" Association="Self.FK_ReportsSet_AvailableServicesSet">
+            <End Role="AvailableServicesSet" EntitySet="AvailableServicesSet" />
+            <End Role="ReportsSet" EntitySet="ReportsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesSet_AvailableServicesSet" Association="Self.FK_ServicesSet_AvailableServicesSet">
+            <End Role="AvailableServicesSet" EntitySet="AvailableServicesSet" />
+            <End Role="ServicesSet" EntitySet="ServicesSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsultationsSet_ClientsSet" Association="Self.FK_ConsultationsSet_ClientsSet">
+            <End Role="ClientsSet" EntitySet="ClientsSet" />
+            <End Role="ConsultationsSet" EntitySet="ConsultationsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportsSet_ClientsSet" Association="Self.FK_ReportsSet_ClientsSet">
+            <End Role="ClientsSet" EntitySet="ClientsSet" />
+            <End Role="ReportsSet" EntitySet="ReportsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesSet_ClientsSet" Association="Self.FK_ServicesSet_ClientsSet">
+            <End Role="ClientsSet" EntitySet="ClientsSet" />
+            <End Role="ServicesSet" EntitySet="ServicesSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsultationsSet_EmployeesSet" Association="Self.FK_ConsultationsSet_EmployeesSet">
+            <End Role="EmployeesSet" EntitySet="EmployeesSet" />
+            <End Role="ConsultationsSet" EntitySet="ConsultationsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportsSet_ConsultationsSet" Association="Self.FK_ReportsSet_ConsultationsSet">
+            <End Role="ConsultationsSet" EntitySet="ConsultationsSet" />
+            <End Role="ReportsSet" EntitySet="ReportsSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MFC_ProjectModelContainer" CdmEntityContainer="MFC_ProjectEntities">
+          <EntitySetMapping Name="AvailableServicesSet">
+            <EntityTypeMapping TypeName="MFC_ProjectModel.AvailableServicesSet">
+              <MappingFragment StoreEntitySet="AvailableServicesSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameService" ColumnName="NameService" />
+                <ScalarProperty Name="CategoryService" ColumnName="CategoryService" />
+                <ScalarProperty Name="TypeService" ColumnName="TypeService" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientsSet">
+            <EntityTypeMapping TypeName="MFC_ProjectModel.ClientsSet">
+              <MappingFragment StoreEntitySet="ClientsSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsultationsSet">
+            <EntityTypeMapping TypeName="MFC_ProjectModel.ConsultationsSet">
+              <MappingFragment StoreEntitySet="ConsultationsSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="DateAcceptance" ColumnName="DateAcceptance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeesSet">
+            <EntityTypeMapping TypeName="MFC_ProjectModel.EmployeesSet">
+              <MappingFragment StoreEntitySet="EmployeesSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportsSet">
+            <EntityTypeMapping TypeName="MFC_ProjectModel.ReportsSet">
+              <MappingFragment StoreEntitySet="ReportsSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdNameService" ColumnName="IdNameService" />
+                <ScalarProperty Name="IdConsultation" ColumnName="IdConsultation" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesSet">
+            <EntityTypeMapping TypeName="MFC_ProjectModel.ServicesSet">
+              <MappingFragment StoreEntitySet="ServicesSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdNameService" ColumnName="IdNameService" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MFC_ProjectModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
