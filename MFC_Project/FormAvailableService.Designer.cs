@@ -249,7 +249,7 @@
             this.Controls.Add(this.labelNameService);
             this.Controls.Add(this.Logo);
             this.Name = "FormAvailableService";
-            this.Text = "FormAvailableService";
+            this.Text = "Доступные услуги";
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

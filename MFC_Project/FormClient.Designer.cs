@@ -37,14 +37,14 @@
             this.labelLastName = new System.Windows.Forms.Label();
             this.labelPhone = new System.Windows.Forms.Label();
             this.listViewClient = new System.Windows.Forms.ListView();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonEdit = new System.Windows.Forms.Button();
-            this.buttonDel = new System.Windows.Forms.Button();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonDel = new System.Windows.Forms.Button();
             this.Logo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
@@ -143,6 +143,26 @@
             this.listViewClient.View = System.Windows.Forms.View.Details;
             this.listViewClient.SelectedIndexChanged += new System.EventHandler(this.listViewClient_SelectedIndexChanged);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Имя";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Отчество";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Фамилия";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Телефон";
+            // 
             // buttonAdd
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.Tomato;
@@ -182,26 +202,6 @@
             this.buttonDel.UseVisualStyleBackColor = false;
             this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Id";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Имя";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Отчество";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Фамилия";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Телефон";
-            // 
             // Logo
             // 
             this.Logo.Image = global::MFC_Project.Properties.Resources._798px_Мои_документы_Logo_svg;
@@ -232,7 +232,7 @@
             this.Controls.Add(this.textBoxMiddleName);
             this.Controls.Add(this.textBoxFirstName);
             this.Name = "FormClient";
-            this.Text = "FormClient";
+            this.Text = "Клиенты";
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

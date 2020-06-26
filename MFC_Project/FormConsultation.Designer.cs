@@ -222,7 +222,7 @@
             this.Controls.Add(this.labelIdEmployee);
             this.Controls.Add(this.labelIdClient);
             this.Name = "FormConsultation";
-            this.Text = "FormConsultation";
+            this.Text = "Консультация";
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

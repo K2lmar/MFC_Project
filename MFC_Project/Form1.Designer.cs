@@ -153,7 +153,7 @@
             this.Controls.Add(this.buttonOpenClients);
             this.Controls.Add(this.Logo);
             this.Name = "Menu";
-            this.Text = "Form1";
+            this.Text = "Меню";
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

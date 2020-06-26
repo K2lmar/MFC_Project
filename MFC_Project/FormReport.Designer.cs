@@ -46,8 +46,8 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Logo = new System.Windows.Forms.PictureBox();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Logo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -214,6 +214,11 @@
             this.columnHeader6.Text = "Id консультации";
             this.columnHeader6.Width = 160;
             // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Цена";
+            this.columnHeader9.Width = 102;
+            // 
             // Logo
             // 
             this.Logo.Image = global::MFC_Project.Properties.Resources._798px_Мои_документы_Logo_svg;
@@ -223,11 +228,6 @@
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Logo.TabIndex = 4;
             this.Logo.TabStop = false;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Цена";
-            this.columnHeader9.Width = 102;
             // 
             // FormReport
             // 
@@ -249,7 +249,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.labelIdClient);
             this.Name = "FormReport";
-            this.Text = "FormReport";
+            this.Text = "Отчетность";
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

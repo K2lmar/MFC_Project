@@ -193,7 +193,7 @@
             this.Controls.Add(this.labelIdNameService);
             this.Controls.Add(this.labelIdClient);
             this.Name = "FormService";
-            this.Text = "FormService";
+            this.Text = "Услуги";
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

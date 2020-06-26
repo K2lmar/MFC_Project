@@ -204,7 +204,7 @@
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
             this.Name = "FormEmployee";
-            this.Text = "FormEmployee";
+            this.Text = "Сотрудники";
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
